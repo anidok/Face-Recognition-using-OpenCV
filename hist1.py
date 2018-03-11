@@ -39,6 +39,7 @@ def lbp_calculated_pixel(img, x, y):
 
 
 def draw_hist(name, gray, height, width):
+
    lbp = np.zeros((height, width,3), np.uint8)
    for i in range(0, height):
       for j in range(0, width):
@@ -67,12 +68,12 @@ def main():
     cam = cv2.VideoCapture('video/sample.mp4')
     while cv2.waitKey(10) == -1:
         ret, img = cam.read()
-        height, width, channel = img.shape
+        height,width = img.shape[:2]
         gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)        
 
         
         draw_hist("cam",gray,height,width)
-        cv2.waitKey(10)
+        cv2.waitKey(1)
 
 if __name__=="__main__":
     main()
